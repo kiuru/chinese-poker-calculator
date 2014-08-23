@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Chinese Poker calculator</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+
+		<h1>Chinese Poker calculator</h1>
+
+			<div class="col-md-6">
+				<form id="calc_form">
+					<input type="text" id="player1" />
+					<input type="text" id="player2" />
+					<input type="text" id="player3" />
+					<button type="button" id="btn-submit">Calc</button>
+				</form>
+				
+				<table id="result_table">
+					<thead>
+						<tr>
+							<th>Pelaaja 1</th>
+							<th>Pelaaja 2</th>
+							<th>Pelaaja 3</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</div>
+
+			<div class="col-md-6">
+				<h2>Verify</h2>
+				<div><span id="verify_calc" style="color:red">0</span></div>
+			</div>
+
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script>
+		$(function(){
+			$("#btn-submit").click(function(){
+				get_new_calc();
+			});
+		});
+
+		get_new_calc = function() {
+			var p1 = parseInt($("#player1").val(),10);
+			var p2 = parseInt($("#player2").val(),10);
+			var p3 = parseInt($("#player3").val(),10);
+
+			var verify = 0;
+			verify = p1 + p2 + p3;
+
+			if (verify == 0) {
+				$("#result_table").append("<tr><td>"+p1+"</td><td>"+p2+"</td><td>"+p3+"</td></tr>");
+				$("#calc_form")[0].reset();
+			}
+			$("#verify_calc").html(verify);
+			console.log(verify);
+		};
+	</script>
+</body>
+</html>
